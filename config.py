@@ -39,16 +39,16 @@ class ConfigBase(object):
     yesterday = str(getYesterday())
     BASE_DIR = os.getcwd()
 
-    # if platform.platform().startswith('W'):
-    #     busSchedule_DIR = BASE_DIR + '\\data\\busSchedule\\'
-    #     routeListSet_DIR = BASE_DIR + '\\data\\routeListSet\\'
-    #     routeStationList_DIR = BASE_DIR + '\\data\\routeStationList\\'
-    #     routeStationTime_DIR = BASE_DIR + '\\data\\routeStationTime\\'
-    # else:
-    busSchedule_DIR = BASE_DIR + '/data/busSchedule/'
-    routeListSet_DIR = BASE_DIR + '/data/routeListSet/'
-    routeStationList_DIR = BASE_DIR + '/data/routeStationList/'
-    routeStationTime_DIR = BASE_DIR + '/data/routeStationTime/'
+    if platform.platform().startswith('W'):
+        busSchedule_DIR = BASE_DIR + '\\data\\busSchedule\\'
+        routeListSet_DIR = BASE_DIR + '\\data\\routeListSet\\'
+        routeStationList_DIR = BASE_DIR + '\\data\\routeStationList\\'
+        routeStationTime_DIR = BASE_DIR + '\\data\\routeStationTime\\'
+    else:
+        busSchedule_DIR = BASE_DIR + '/data/busSchedule/'
+        routeListSet_DIR = BASE_DIR + '/data/routeListSet/'
+        routeStationList_DIR = BASE_DIR + '/data/routeStationList/'
+        routeStationTime_DIR = BASE_DIR + '/data/routeStationTime/'
 
     busSchedule_FILE = 'busSchedule' + today + '.json'
     routeListSet_FILE = 'routeListSet' + today + '.json'

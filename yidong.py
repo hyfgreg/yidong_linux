@@ -396,8 +396,12 @@ class QueryYidong(object):
         if type(document) == list or type(document) == dict:
             documentJSON = json.dumps(document, ensure_ascii=False, indent=4)
             documentJSONBYTES = documentJSON.encode('utf-8')
-        with open('data\\' + folder_name + '\\' + folder_name + str(date.today()) + '.json', 'wb') as f:
-            f.write(documentJSONBYTES)
+        try:
+            with open('data/' + folder_name + '/' + folder_name + str(date.today()) + '.json', 'wb') as f:
+                f.write(documentJSONBYTES)
+        except Exception as e:
+            print('保存',folder_name,'失败')
+            raise CustomError('保存',folder_name,'失败')
 
 # yidong = QueryYidong()
 # print(yidong._queryRouteStationTime())
