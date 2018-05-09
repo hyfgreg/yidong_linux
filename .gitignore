@@ -1,6 +1,5 @@
-
 # no .json files
-*.json
+#*.json
 
 # no idea dir
 .idea/
