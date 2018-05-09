@@ -28,7 +28,7 @@ def main():
         sendmail(str(e),success=False)
 if __name__ == '__main__':
     sched = BlockingScheduler()
-    sched.add_job(main,'cron',hour=22,minute=6)
+    sched.add_job(main,'cron',hour=0,minute=5)
     sched.start()
 
     # main()
