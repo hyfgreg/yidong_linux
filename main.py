@@ -5,6 +5,7 @@ import config
 from savedata import SaveData
 from sendmail import sendmail
 from upload_to_qiniu import upload
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 def main():
     try:
@@ -26,4 +27,8 @@ def main():
     except:
         sendmail(str(e),success=False)
 if __name__ == '__main__':
-    main()
+    sched = BlockingScheduler()
+    sched.add_job(main,'cron',hour=22,minute=6)
+    sched.start()
+
+    # main()

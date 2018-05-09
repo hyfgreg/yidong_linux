@@ -328,7 +328,7 @@ class QueryYidong(object):
         #     a = json.loads(a)
 
         # 以序号为key
-        with open('data\\' + 'busSchedule\\' + 'busSchedule' + str(date.today()) + '.json', 'r', encoding='utf-8') as f:
+        with open('data/' + 'busSchedule/' + 'busSchedule' + str(date.today()) + '.json', 'r', encoding='utf-8') as f:
             a = f.read()
             a = json.loads(a)
 
