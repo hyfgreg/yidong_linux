@@ -19,7 +19,7 @@ def main():
         s.saveSimple()
     except Exception as e:
         sendmail(str(e),success=False)
-    # sendmail('报错测试')
+
     try:
         result = upload()
         sendmail(result)
