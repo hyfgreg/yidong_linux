@@ -35,8 +35,8 @@ class ConfigBase(object):
     edbus_weekend = 'edbus_weekend.json.gz'
 
 
-    today = str(date.today())
-    yesterday = str(getYesterday())
+    today = date.today
+    yesterday =getYesterday
     BASE_DIR = os.getcwd()
 
     if platform.platform().startswith('W'):
@@ -50,10 +50,10 @@ class ConfigBase(object):
         routeStationList_DIR = BASE_DIR + '/data/routeStationList/'
         routeStationTime_DIR = BASE_DIR + '/data/routeStationTime/'
 
-    busSchedule_FILE = 'busSchedule' + today + '.json'
-    routeListSet_FILE = 'routeListSet' + today + '.json'
-    routeStationList_FILE = 'routeStationList' + today + '.json'
-    routeStationTime_FILE = 'routeStationTime' + today + '.json'
+    busSchedule_FILE = 'busSchedule' + str(today()) + '.json'
+    routeListSet_FILE = 'routeListSet' + str(today()) + '.json'
+    routeStationList_FILE = 'routeStationList' + str(today()) + '.json'
+    routeStationTime_FILE = 'routeStationTime' + str(today()) + '.json'
 
     #是否压缩
     compress = True
@@ -70,10 +70,10 @@ class Config(ConfigBase):
         updateData_DIR = ConfigBase.BASE_DIR + '\\updateData\\'
     else:
         updateData_DIR = ConfigBase.BASE_DIR + '/updateData/'
-    updateData_FILE = 'edbus'+ConfigBase.today+'.json'
-    updateData_FILE_Compress = 'edbus' + ConfigBase.today + '.json.gz'
-    yesterday_FILE = 'edbus' + ConfigBase.yesterday +'.json'
-    yesterday_FILE_Compress = 'edbus' + ConfigBase.yesterday + '.json.gz'
+    updateData_FILE = 'edbus'+str(ConfigBase.today())+'.json'
+    updateData_FILE_Compress = 'edbus' + str(ConfigBase.today()) + '.json.gz'
+    yesterday_FILE = 'edbus' + str(ConfigBase.yesterday()) +'.json'
+    yesterday_FILE_Compress = 'edbus' + str(ConfigBase.yesterday()) + '.json.gz'
 
     yidong_url = ConfigBase.official_url
 
