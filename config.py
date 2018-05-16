@@ -33,6 +33,10 @@ class ConfigBase(object):
     q = Auth(access_key, secret_key)
     edbus_weekday = 'edbus_weekday.json.gz'
     edbus_weekend = 'edbus_weekend.json.gz'
+    urls = [
+        'http://orc49pj4h.bkt.clouddn.com/edbus_weekday.json.gz',
+        'http://orc49pj4h.bkt.clouddn.com/edbus_weekend.json.gz'
+    ]
 
 
     today = date.today

@@ -22,13 +22,13 @@ def main():
         sendmail(str(e),success=False)
 
     try:
-        result = upload()
-        sendmail(result)
+        info,result = upload()
+        sendmail(str(info)+str(result))
     except:
         sendmail(str(e),success=False)
 if __name__ == '__main__':
-    sched = BlockingScheduler()
-    sched.add_job(main,'cron',hour=0,minute=5)
-    sched.start()
+    # sched = BlockingScheduler()
+    # sched.add_job(main,'cron',hour=0,minute=5)
+    # sched.start()
 
-    # main()
+    main()

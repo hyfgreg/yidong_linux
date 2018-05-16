@@ -1,8 +1,10 @@
-from qiniu import put_file, etag, urlsafe_base64_encode
+from time import sleep
+
+from qiniu import put_file, etag, urlsafe_base64_encode,CdnManager
 from config import Config
 from datetime import datetime
 
-def upload(Compress = Config.compress):
+def upload(Compress = Config.compress,refresh_flag=True):
     if not Compress:
         file = Config.updateData_FILE
     else:
@@ -20,7 +22,20 @@ def upload(Compress = Config.compress):
         assert ret['key'] == key
         assert ret['hash'] == etag(localfile)
         print('成功上传文档{}至{}'.format(key, Config.BUCKET_NAME))
-        return '成功上传文档{}至{}'.format(key, Config.BUCKET_NAME)
+        if refresh_flag:
+            sleep(5)
+            result = refresh()
+        # return '成功上传文档{}至{}'.format(key, Config.BUCKET_NAME)
+        return info,result
     except Exception as e:
         print(e.args)
         raise e
+
+def refresh():
+    cdn_manager = CdnManager(Config.q)
+    refresh_url_result = cdn_manager.refresh_urls(Config.urls)
+    print(refresh_url_result)
+    return refresh_url_result
+
+if __name__ == '__main__':
+    refresh()
